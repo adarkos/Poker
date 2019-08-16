@@ -127,19 +127,27 @@ public class Poker{
             newHand[k+1] = key;
         }
         
-        //add code to order by suit if same number
-        int z;
-        for(int m=1; m<n; ++m){
-            for(z=j-1; z>=0 && newHand[z].getNumber() == newHand[m].getNumber(); z--){
-                if(newHand[z].getSuit() > newHand[m].getSuit()){
-                    newHand[z+1] = newHand[z];
-                }
-            }
-            newHand[z+1] = newHand[m];
-        }
         
-        for(int p=0; p<newHand.length; p++){
-            output(newHand[p]);
+        //add code to order by suit if same number
+        //need to sort this better -> insertion matbe
+        for(int i = 0; i<n; i++){
+            for(j=1; j<n-1;j++){
+                if(newHand[j].getNumber() == newHand[i].getNumber()){
+                    System.out.println("here");
+                    System.out.println("i: " + newHand[i].getNumber());
+                    System.out.println("j: " + newHand[j].getNumber());
+                    if((int) (newHand[i].getSuit()) > (int) newHand[j].getSuit()){
+                        Card temp = newHand[i];
+                        newHand[i] = newHand[j];
+                        newHand[j] = temp;
+                    }
+               } else {
+                    break;
+               }
+            }
+        }
+        for (Card card : newHand) {
+            output(card);
         }
         System.out.println();
     }
