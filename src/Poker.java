@@ -130,20 +130,22 @@ public class Poker{
         
         //add code to order by suit if same number
         //need to sort this better -> insertion matbe
-        for(int i = 0; i<n; i++){
-            for(j=1; j<n-1;j++){
-                if(newHand[j].getNumber() == newHand[i].getNumber()){
-                    System.out.println("here");
-                    System.out.println("i: " + newHand[i].getNumber());
-                    System.out.println("j: " + newHand[j].getNumber());
+        for(int i = 0; i<n; i+=1){
+            for(j=1; j<n; j++){
+                if(newHand[i].getNumber() == newHand[j].getNumber()){
                     if((int) (newHand[i].getSuit()) > (int) newHand[j].getSuit()){
+                        System.out.println(newHand[i].getSuit());
+                        System.out.println(newHand[j].getSuit());
                         Card temp = newHand[i];
                         newHand[i] = newHand[j];
                         newHand[j] = temp;
+                        for (Card card : newHand) {
+                              output(card);
+                        }
                     }
-               } else {
+                } else {
                     break;
-               }
+                }
             }
         }
         for (Card card : newHand) {
